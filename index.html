@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#263b32"><title>Sombra16 · Diario de vida</title>
+<style>
+:root{--ink:#26352d;--green:#385849;--mint:#e7efe9;--paper:#faf9f5;--line:#dce3dc;--muted:#69766d;--white:#fff}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px system-ui,-apple-system,Segoe UI,sans-serif}
+header{background:var(--green);color:white;padding:24px 18px 20px;border-radius:0 0 24px 24px}
+.wrap{max-width:780px;margin:auto;padding:0 14px 32px}.top{display:flex;gap:14px;align-items:center}.avatar{width:70px;height:70px;border-radius:20px;background:#dce8df;color:var(--green);display:grid;place-items:center;font-size:30px;flex-shrink:0}
+h1{font-size:26px;margin:0 0 4px}h2{font-size:20px;margin:0 0 14px}h3{font-size:16px;margin:0 0 8px}.sub{opacity:.85;font-size:13px}
+nav{display:flex;gap:7px;overflow:auto;padding:14px 0}.tab{border:1px solid var(--line);background:white;border-radius:999px;padding:10px 14px;white-space:nowrap;color:var(--ink);font-weight:650}.tab.active{background:var(--green);color:white;border-color:var(--green)}
+main{padding-top:2px}.panel{background:white;border:1px solid var(--line);border-radius:18px;padding:17px;margin:0 0 14px;box-shadow:0 3px 12px #26352d08}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.stat{background:var(--mint);border-radius:13px;padding:12px}.stat b{display:block;font-size:18px}.stat span{font-size:12px;color:var(--muted)}
+label{display:block;font-size:13px;font-weight:700;margin:12px 0 5px}input,select,textarea{width:100%;padding:11px 12px;border:1px solid #cbd6cd;border-radius:10px;background:white;color:var(--ink);font:inherit}textarea{min-height:88px;resize:vertical}
+button,.button{background:var(--green);color:white;border:0;border-radius:11px;padding:11px 14px;font:inherit;font-weight:700;cursor:pointer}.secondary{background:var(--mint);color:var(--ink);border:1px solid var(--line)}.danger{background:#9a3939}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:13px}.entry{border-top:1px solid var(--line);padding:13px 0}.entry:first-child{border-top:0}.entry small{color:var(--muted)}.entry p{white-space:pre-wrap;margin:7px 0}.photo{max-width:100%;max-height:220px;border-radius:12px;display:block;margin-top:8px}.hidden{display:none!important}.hint{color:var(--muted);font-size:13px;line-height:1.5}.pill{display:inline-block;background:var(--mint);padding:4px 8px;border-radius:99px;font-size:12px;margin:3px 3px 0 0}
+footer{color:var(--muted);font-size:12px;text-align:center;padding:12px}
+@media(min-width:650px){.grid{grid-template-columns:repeat(4,minmax(0,1fr))}.wrap{padding-left:20px;padding-right:20px}}
+</style></head>
+<body>
+<header><div class="wrap"><div class="top"><div class="avatar">🐕</div><div><h1>Sombra16</h1><div>Su historia, un día a la vez</div><div class="sub">Adopción: 16 de octubre de 2026 · Expediente S16-001</div></div></div></div></header>
+<div class="wrap">
+<nav id="nav">
+<button class="tab active" data-tab="inicio">Resumen</button><button class="tab" data-tab="diario">Diario y fotos</button><button class="tab" data-tab="salud">Salud</button><button class="tab" data-tab="perfil">Perfil y pasado</button><button class="tab" data-tab="datos">Copia de seguridad</button>
+</nav>
+<main>
+<section id="inicio" class="page">
+<div class="panel"><h2>Hola, Sombra16 💚</h2><p>Este es el punto de partida de su nueva vida. Registra pequeños avances, sin exigirle más de lo que puede manejar hoy.</p>
+<div class="grid"><div class="stat"><b>10,3 kg</b><span>Peso inicial</span></div><div class="stat"><b>Mediana</b><span>Tamaño</span></div><div class="stat"><b>Hembra</b><span>Sexo</span></div><div class="stat"><b>Adulta</b><span>Edad estimada: 4–7 años</span></div></div></div>
+<div class="panel"><h2>Primeras notas</h2><div class="entry"><small>Historia conocida</small><p>Su anterior cuidador no pudo seguir haciéndose cargo y la entregó a una fundación.</p></div><div class="entry"><small>Adaptación inicial</small><p>Busca mucha cercanía con su persona de referencia. Empieza a tolerar una distancia de hasta unos 5 metros, según lo observado.</p></div><div class="entry"><small>Miedos observados</small><p>Muestra miedo ante otros perros y perras. Evitar acercamientos forzados; registrar distancia, señales y recuperación.</p></div></div>
+<div class="panel"><h2>Registrar algo de hoy</h2><p class="hint">Usa el diario para anotar un progreso, un paseo, una comida, una foto o cualquier cambio.</p><button onclick="showTab('diario')">＋ Nueva entrada del diario</button></div>
+</section>
+<section id="diario" class="page hidden">
+<div class="panel"><h2>Diario de vida</h2><form id="journalForm">
+<label for="jdate">Fecha</label><input id="jdate" type="date" required>
+<label for="jtype">Tipo de registro</label><select id="jtype"><option>Adaptación y emociones</option><option>Paseo</option><option>Alimentación y agua</option><option>Deposiciones</option><option>Sueño y descanso</option><option>Entrenamiento</option><option>Encuentro con perros</option><option>Salud</option><option>Momento bonito</option><option>Otro</option></select>
+<label for="jtitle">Título breve</label><input id="jtitle" placeholder="Ej. Se quedó tranquila a 5 metros">
+<label for="jnote">¿Qué ocurrió? ¿Cómo reaccionó?</label><textarea id="jnote" required placeholder="Describe hechos observables, qué pudo ayudar y cuánto tardó en tranquilizarse…"></textarea>
+<label for="jphoto">Añadir foto (opcional)</label><input id="jphoto" type="file" accept="image/*">
+<p class="hint">Las fotos se guardan en este navegador. Muchas fotos grandes pueden ocupar bastante espacio.</p>
+<div class="actions"><button type="submit">Guardar entrada</button><button type="button" class="secondary" id="cancelEdit">Cancelar edición</button></div>
+</form></div>
+<div class="panel"><h2>Entradas guardadas</h2><div id="journalList"><p class="hint">Todavía no hay entradas personales. Añade la primera arriba.</p></div></div>
+</section>
+<section id="salud" class="page hidden">
+<div class="panel"><h2>Salud y veterinario</h2><p class="hint">Introduce los datos tal como aparecen en el carné. No supongas vacunas ni fechas que no estén documentadas.</p>
+<form id="healthForm"><label>Tipo de registro</label><select id="htype"><option>Vacuna</option><option>Desparasitación interna</option><option>Control de pulgas y garrapatas</option><option>Consulta veterinaria</option><option>Medicamento</option><option>Análisis o examen</option><option>Cirugía</option><option>Otro</option></select>
+<label>Nombre del producto, vacuna o consulta</label><input id="hname" required placeholder="Tal como aparece en el carné">
+<label>Fecha realizada</label><input id="hdate" type="date">
+<label>Próxima fecha / vencimiento (si lo indicó el veterinario)</label><input id="hnext" type="date">
+<label>Veterinario, clínica y notas</label><textarea id="hnote" placeholder="Lote, dosis, observaciones, clínica…"></textarea>
+<button type="submit">Guardar registro de salud</button></form></div>
+<div class="panel"><h2>Historial de salud</h2><div id="healthList"><p class="hint">Pendiente de transcribir el carné.</p></div></div>
+<div class="panel"><h3>Recordatorio importante</h3><p class="hint">Esta versión registra fechas, pero todavía no envía notificaciones automáticas. Confirma con su veterinario el calendario de vacunación y desparasitación.</p></div>
+</section>
+<section id="perfil" class="page hidden">
+<div class="panel"><h2>Perfil de Sombra16</h2><form id="profileForm">
+<label>Nombre</label><input id="pname" value="Sombra16" required>
+<label>Fecha de adopción</label><input id="padopt" type="date" value="2026-10-16">
+<label>Fecha de nacimiento (si se conoce)</label><input id="pbirth" type="date">
+<label>Edad estimada</label><input id="page" value="Adulta, aproximadamente 4–7 años">
+<label>Raza / ascendencia</label><input id="pbreed" value="Mestiza o criolla">
+<label>Sexo</label><select id="psex"><option selected>Hembra</option><option>Macho</option></select>
+<label>Peso actual (kg)</label><input id="pweight" type="number" min="0" step="0.1" value="10.3">
+<label>Tamaño</label><select id="psize"><option>Pequeña</option><option selected>Mediana</option><option>Grande</option><option>Gigante</option><option>Desconocido</option></select>
+<label>Esterilización</label><select id="pster"><option selected>Sí</option><option>No</option><option>No confirmado</option></select>
+<label>Origen y pasado conocido</label><textarea id="ppast">Su anterior cuidador no pudo seguir haciéndose cargo y la entregó a una fundación.</textarea>
+<label>Miedos y situaciones difíciles observadas</label><textarea id="pfears">Muestra miedo a perros y perras. No se conoce todavía la causa.</textarea>
+<label>Personas y animales con quienes convive</label><textarea id="phome" placeholder="Completar cuando se conozca"></textarea>
+<label>Datos pendientes / documentos de la fundación</label><textarea id="punknown" placeholder="Fecha de nacimiento, historial anterior, microchip, vacunas, desparasitación, enfermedades…"></textarea>
+<button type="submit">Guardar perfil</button></form></div>
+<div class="panel"><h2>Genética y ascendencia</h2><p class="hint">Raza actual: mestiza/criolla (dato aportado). La ascendencia genética está sin confirmar. Solo se registrará como resultado genético lo que conste en una prueba de ADN; la apariencia no confirma porcentajes de raza ni enfermedades hereditarias.</p><label>Microchip (si tiene)</label><input id="chip" placeholder="No compartas este dato públicamente"><label>Resultados de ADN / antecedentes familiares</label><textarea id="dna" placeholder="Laboratorio, fecha y resultado documentado"></textarea><button id="saveDna">Guardar datos adicionales</button></div>
+</section>
+<section id="datos" class="page hidden">
+<div class="panel"><h2>Copia de seguridad</h2><p>Los datos de esta demo se guardan localmente en el navegador de este dispositivo. No se sincronizan con la nube ni con otro móvil.</p><div class="actions"><button id="exportBtn">Exportar copia JSON</button><label class="button secondary" for="importFile">Importar copia JSON</label><input class="hidden" id="importFile" type="file" accept=".json,application/json"></div><p class="hint">Haz exportaciones periódicas y conserva el archivo en un lugar seguro. Al borrar los datos del navegador podrías perder registros y fotos.</p></div>
+<div class="panel"><h2>Privacidad y límites</h2><ul><li>No contiene diagnóstico veterinario ni sustituye al profesional.</li><li>No envía recordatorios del sistema todavía.</li><li>La información se almacena en este navegador.</li><li>Esta es una primera versión de prueba, no una APK instalada.</li></ul><button class="danger" id="clearBtn">Borrar todos los datos locales</button></div>
+</section>
+</main><footer>Sombra16 · Prototipo local v0.1 · Hecho para registrar su historia con cariño y datos reales.</footer>
+</div>
+<script>
+const $=id=>document.getElementById(id);
+const KEY='sombra16_v01';
+let data={journal:[],health:[],profile:{},extra:{}}, editingId=null;
+function load(){try{const s=localStorage.getItem(KEY);if(s)data=Object.assign(data,JSON.parse(s));}catch(e){console.warn(e)}}
+function save(){localStorage.setItem(KEY,JSON.stringify(data))}
+function showTab(id){document.querySelectorAll('.page').forEach(x=>x.classList.toggle('hidden',x.id!==id));document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x.dataset.tab===id));window.scrollTo({top:0,behavior:'smooth'})}
+document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>showTab(b.dataset.tab)));
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function today(){return new Date().toISOString().slice(0,10)}
+$('jdate').value=today(); $('hdate').value=today();
+function renderJournal(){const box=$('journalList');if(!data.journal.length){box.innerHTML='<p class="hint">Todavía no hay entradas personales. Añade la primera arriba.</p>';return}
+box.innerHTML=[...data.journal].sort((a,b)=>b.date.localeCompare(a.date)).map(x=>`<div class="entry"><small>${esc(x.date)} · ${esc(x.type)}</small><h3>${esc(x.title||'Registro sin título')}</h3><p>${esc(x.note)}</p>${x.photo?`<img class="photo" src="${x.photo}" alt="Foto de Sombra16">`:''}<div class="actions"><button class="secondary" onclick="editJournal('${x.id}')">Editar</button><button class="danger" onclick="deleteJournal('${x.id}')">Eliminar</button></div></div>`).join('')}
+function resetJournal(){editingId=null;$('journalForm').reset();$('jdate').value=today();$('cancelEdit').textContent='Cancelar edición'}
+$('cancelEdit').onclick=resetJournal;
+$('journalForm').onsubmit=async e=>{e.preventDefault();const file=$('jphoto').files[0];let photo='';if(file){if(file.size>1500000){alert('Elige una foto de menos de 1,5 MB para evitar llenar el almacenamiento.');return}photo=await new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>res(r.result);r.onerror=rej;r.readAsDataURL(file)})}
+let old=data.journal.find(x=>x.id===editingId);const item={id:editingId||crypto.randomUUID(),date:$('jdate').value,type:$('jtype').value,title:$('jtitle').value,note:$('jnote').value,photo:photo||(old?.photo||'')};if(editingId)data.journal=data.journal.map(x=>x.id===editingId?item:x);else data.journal.push(item);save();renderJournal();resetJournal();alert('Entrada guardada en este dispositivo.')};
+window.editJournal=id=>{const x=data.journal.find(a=>a.id===id);if(!x)return;editingId=id;$('jdate').value=x.date;$('jtype').value=x.type;$('jtitle').value=x.title;$('jnote').value=x.note;$('cancelEdit').textContent='Cancelar edición';showTab('diario');window.scrollTo({top:0,behavior:'smooth'})};
+window.deleteJournal=id=>{if(confirm('¿Eliminar esta entrada?')){data.journal=data.journal.filter(x=>x.id!==id);save();renderJournal()}};
+function renderHealth(){const box=$('healthList');if(!data.health.length){box.innerHTML='<p class="hint">Pendiente de transcribir el carné.</p>';return}box.innerHTML=[...data.health].sort((a,b)=>(b.date||'').localeCompare(a.date||'')).map(x=>`<div class="entry"><small>${esc(x.date||'Fecha no indicada')} · ${esc(x.type)}</small><h3>${esc(x.name)}</h3>${x.next?`<span class="pill">Próxima fecha: ${esc(x.next)}</span>`:''}<p>${esc(x.note)}</p><button class="danger" onclick="deleteHealth('${x.id}')">Eliminar</button></div>`).join('')}
+$('healthForm').onsubmit=e=>{e.preventDefault();data.health.push({id:crypto.randomUUID(),type:$('htype').value,name:$('hname').value,date:$('hdate').value,next:$('hnext').value,note:$('hnote').value});save();renderHealth();e.target.reset();$('hdate').value=today();alert('Registro de salud guardado.')};
+window.deleteHealth=id=>{if(confirm('¿Eliminar este registro de salud?')){data.health=data.health.filter(x=>x.id!==id);save();renderHealth()}};
+const profileFields=['pname','padopt','pbirth','page','pbreed','psex','pweight','psize','pster','ppast','pfears','phome','punknown'];
+function loadProfile(){profileFields.forEach(id=>{if(data.profile[id]!==undefined)$(id).value=data.profile[id]});if(data.extra.chip!==undefined)$('chip').value=data.extra.chip;if(data.extra.dna!==undefined)$('dna').value=data.extra.dna}
+$('profileForm').onsubmit=e=>{e.preventDefault();profileFields.forEach(id=>data.profile[id]=$(id).value);save();alert('Perfil guardado.')};
+$('saveDna').onclick=()=>{data.extra={chip:$('chip').value,dna:$('dna').value};save();alert('Datos adicionales guardados.')};
+$('exportBtn').onclick=()=>{const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='Sombra16-copia-'+today()+'.json';a.click();URL.revokeObjectURL(url)};
+$('importFile').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{const d=JSON.parse(await f.text());if(!d||!Array.isArray(d.journal)||!Array.isArray(d.health))throw new Error();if(confirm('Importar reemplazará los datos locales actuales. ¿Continuar?')){data=d;save();renderJournal();renderHealth();loadProfile();alert('Copia importada.')}}catch(err){alert('No se pudo importar: el archivo no parece una copia válida de Sombra16.')}e.target.value=''};
+$('clearBtn').onclick=()=>{if(confirm('Esto borrará el perfil, las entradas, las fotos y la salud guardados en este navegador. ¿Seguro?')){localStorage.removeItem(KEY);location.reload()}};
+load();renderJournal();renderHealth();loadProfile();
+</script></body></html>
